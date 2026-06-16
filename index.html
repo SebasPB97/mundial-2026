@@ -7,16 +7,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg:#f8f9fc;--surface:#ffffff;--surface-2:#f1f3f8;--border:#e2e5f0;
-      --text:#1a1d2e;--text-muted:#6b7094;--accent:#4f75d6;
-      --green:#2d9e6b;--yellow:#c47f0a;--red:#d63b4f;--cyan:#0e7fa8;--orange:#c4620a;
-      --sidebar-w:260px;--radius:8px;
-    }
+    :root{--bg:#f8f9fc;--surface:#fff;--surface-2:#f1f3f8;--border:#e2e5f0;--text:#1a1d2e;--text-muted:#6b7094;--accent:#4f75d6;--green:#2d9e6b;--yellow:#c47f0a;--red:#d63b4f;--cyan:#0e7fa8;--orange:#c4620a;--sidebar-w:260px;--radius:8px;}
     *{box-sizing:border-box;margin:0;padding:0;}
     body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:15px;}
     .layout{display:flex;min-height:100vh;}
-    .sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1px solid var(--border);position:fixed;top:0;left:0;height:100vh;overflow-y:auto;padding:24px 0;display:flex;flex-direction:column;z-index:100;transition:width 0.25s;}
+    .sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1px solid var(--border);position:fixed;top:0;left:0;height:100vh;overflow-y:auto;padding:24px 0;display:flex;flex-direction:column;z-index:100;transition:width .25s;}
     .sidebar-header{padding:0 20px 20px;border-bottom:1px solid var(--border);margin-bottom:16px;display:flex;align-items:flex-start;justify-content:space-between;}
     .sidebar-title{font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;}
     .sidebar-doc-title{font-size:15px;font-weight:600;color:var(--text);margin-top:6px;line-height:1.4;}
@@ -45,42 +40,26 @@
     .hero-indicator{font-size:36px;line-height:1;flex-shrink:0;}
     .hero-body{flex:1;min-width:0;}
     .hero-state{font-size:18px;font-weight:700;margin-bottom:4px;}
-    .hero-state.ok{color:var(--green);}
-    .hero-state.warn{color:var(--yellow);}
+    .hero-state.ok{color:var(--green);}.hero-state.warn{color:var(--yellow);}
     .hero-verdict{font-size:14px;color:var(--text-muted);margin-bottom:16px;}
     .hero-counts{display:flex;gap:12px;flex-wrap:wrap;}
     .hero-count{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;padding:4px 12px;border-radius:20px;background:var(--surface-2);border:1px solid var(--border);}
     .hero-count .count-num{font-size:16px;font-weight:700;}
-    .hero-count.green .count-num{color:var(--green);}
-    .hero-count.blue .count-num{color:var(--accent);}
-    .hero-count.yellow .count-num{color:var(--yellow);}
-    .hero-count.red .count-num{color:var(--red);}
-    .hero-count.neutral .count-num{color:var(--text);}
+    .hero-count.green .count-num{color:var(--green);}.hero-count.blue .count-num{color:var(--accent);}.hero-count.yellow .count-num{color:var(--yellow);}.hero-count.red .count-num{color:var(--red);}.hero-count.neutral .count-num{color:var(--text);}
     section{margin-bottom:56px;scroll-margin-top:80px;}
     section h2{font-size:20px;font-weight:600;color:var(--text);margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:10px;position:relative;}
     section h2 .permalink{opacity:0;font-size:14px;color:var(--text-muted);text-decoration:none;margin-left:6px;transition:opacity .15s;font-weight:400;}
     section h2:hover .permalink{opacity:1;}
-    .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin-bottom:28px;}
+    section h3{font-size:15px;font-weight:600;margin:24px 0 12px;}
+    .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:14px;margin-bottom:28px;}
     .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;}
     .card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:8px;}
     .card-value{font-size:28px;font-weight:700;color:var(--text);}
-    .card-value.green{color:var(--green);}
-    .card-value.blue{color:var(--accent);}
-    .card-value.yellow{color:var(--yellow);}
-    .card-value.red{color:var(--red);}
+    .card-value.green{color:var(--green);}.card-value.blue{color:var(--accent);}.card-value.yellow{color:var(--yellow);}.card-value.red{color:var(--red);}
     .badge{display:inline-flex;align-items:center;gap:4px;padding:2px 10px;border-radius:20px;font-size:12px;font-weight:500;}
-    .badge.blue{background:rgba(79,117,214,.12);color:var(--accent);}
-    .badge.green{background:rgba(45,158,107,.12);color:var(--green);}
-    .badge.yellow{background:rgba(196,127,10,.12);color:var(--yellow);}
-    .badge.red{background:rgba(214,59,79,.12);color:var(--red);}
-    .badge.cyan{background:rgba(14,127,168,.12);color:var(--cyan);}
-    .badge.orange{background:rgba(196,98,10,.12);color:var(--orange);}
-    .badge.gray{background:var(--surface-2);color:var(--text-muted);}
+    .badge.blue{background:rgba(79,117,214,.12);color:var(--accent);}.badge.green{background:rgba(45,158,107,.12);color:var(--green);}.badge.yellow{background:rgba(196,127,10,.12);color:var(--yellow);}.badge.red{background:rgba(214,59,79,.12);color:var(--red);}.badge.cyan{background:rgba(14,127,168,.12);color:var(--cyan);}.badge.orange{background:rgba(196,98,10,.12);color:var(--orange);}.badge.gray{background:var(--surface-2);color:var(--text-muted);}
     .callout{border-radius:var(--radius);padding:14px 18px;margin-bottom:14px;border-left:3px solid;font-size:14px;line-height:1.6;}
-    .callout.info{background:rgba(79,117,214,.06);border-color:var(--accent);color:#3a5baa;}
-    .callout.success{background:rgba(45,158,107,.06);border-color:var(--green);color:#236e4e;}
-    .callout.warning{background:rgba(196,127,10,.08);border-color:var(--yellow);color:#9a6200;}
-    .callout.danger{background:rgba(214,59,79,.06);border-color:var(--red);color:#a82a3b;}
+    .callout.info{background:rgba(79,117,214,.06);border-color:var(--accent);color:#3a5baa;}.callout.success{background:rgba(45,158,107,.06);border-color:var(--green);color:#236e4e;}.callout.warning{background:rgba(196,127,10,.08);border-color:var(--yellow);color:#9a6200;}.callout.danger{background:rgba(214,59,79,.06);border-color:var(--red);color:#a82a3b;}
     .callout strong{display:block;margin-bottom:4px;font-weight:600;}
     .table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border);margin-bottom:20px;}
     table{width:100%;border-collapse:collapse;font-size:14px;}
@@ -90,670 +69,273 @@
     tbody tr:hover td{background:var(--surface-2);}
     .match-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;margin-bottom:20px;overflow:hidden;transition:box-shadow .2s;}
     .match-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.07);}
-    .match-card.exact{border-left:4px solid var(--green);}
-    .match-card.winner{border-left:4px solid var(--accent);}
-    .match-card.fail{border-left:4px solid var(--red);}
-    .match-card.surprise{border-left:4px solid var(--orange);}
-    .match-card.result-card{border-left:4px solid var(--green);}
+    .match-card.exact{border-left:4px solid var(--green);}.match-card.winner{border-left:4px solid var(--accent);}.match-card.fail{border-left:4px solid var(--red);}.match-card.surprise{border-left:4px solid var(--orange);}
     .match-header{padding:16px 24px;background:var(--surface-2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
     .match-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
     .match-time{font-size:13px;color:var(--text-muted);}
-    .match-teams{display:flex;align-items:center;gap:0;padding:20px 24px;border-bottom:1px solid var(--border);}
+    .match-teams{display:flex;align-items:center;padding:20px 24px;border-bottom:1px solid var(--border);}
     .team-block{flex:1;text-align:center;}
-    .team-flag{font-size:40px;line-height:1;margin-bottom:6px;}
-    .team-name{font-size:16px;font-weight:700;color:var(--text);}
+    .team-flag{font-size:38px;line-height:1;margin-bottom:6px;}
+    .team-name{font-size:16px;font-weight:700;}
     .team-rank{font-size:12px;color:var(--text-muted);margin-top:2px;}
-    .vs-block{padding:0 20px;text-align:center;}
-    .vs-text{font-size:22px;font-weight:800;color:var(--border);letter-spacing:.05em;}
+    .vs-block{padding:0 16px;text-align:center;min-width:90px;}
+    .vs-text{font-size:20px;font-weight:800;color:var(--border);}
     .pred-score-display{font-size:13px;font-weight:700;color:var(--accent);margin-top:4px;white-space:nowrap;}
     .actual-score-display{font-size:22px;font-weight:900;color:var(--green);margin-top:4px;white-space:nowrap;}
     .match-body{padding:16px 24px;}
     .match-body .factors-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:10px;}
-    .factors-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;}
+    .factors-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:0;}
     .factor-item{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:10px 14px;}
     .factor-label{font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;}
     .factor-value{font-size:13px;color:var(--text);font-weight:500;}
     .match-footer{padding:14px 24px;border-top:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-    .prediction-block{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+    .prediction-block{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
     .pred-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);}
-    .pred-result{font-size:18px;font-weight:800;color:var(--text);}
+    .pred-result{font-size:17px;font-weight:800;color:var(--text);}
     .pred-strike{font-size:14px;font-weight:600;color:var(--text-muted);text-decoration:line-through;}
-    .actual-result{font-size:18px;font-weight:800;color:var(--green);}
-    .insight-block{font-size:13px;color:var(--text-muted);font-style:italic;max-width:340px;}
-    .result-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--green);}
-    .summary-score{font-weight:700;color:var(--accent);font-size:15px;}
-    .result-score-exact{font-weight:700;color:var(--green);font-size:15px;}
-    .result-score-winner{font-weight:700;color:var(--accent);font-size:15px;}
-    .result-score-fail{font-weight:700;color:var(--red);font-size:15px;}
-    .theme-toggle{background:none;border:1px solid var(--border);border-radius:var(--radius);color:var(--text-muted);font-size:16px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;flex-shrink:0;}
+    .actual-result{font-size:17px;font-weight:800;color:var(--green);}
+    .insight-block{font-size:13px;color:var(--text-muted);font-style:italic;max-width:360px;}
+    .summary-score{font-weight:700;color:var(--accent);font-size:14px;}
+    .res-exact{font-weight:700;color:var(--green);font-size:14px;}
+    .res-winner{font-weight:700;color:var(--accent);font-size:14px;}
+    .res-fail{font-weight:700;color:var(--red);font-size:14px;}
+    .theme-toggle{background:none;border:1px solid var(--border);border-radius:var(--radius);color:var(--text-muted);font-size:16px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
     .menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:20px;cursor:pointer;}
     p{color:var(--text);margin-bottom:14px;}
-    ul,ol{padding-left:22px;margin-bottom:14px;}
-    li{margin-bottom:6px;color:var(--text);}
-    @media(max-width:768px){
-      .sidebar{transform:translateX(-100%);}
-      .sidebar.open{transform:translateX(0);box-shadow:4px 0 30px rgba(0,0,0,.15);}
-      .main{margin-left:0;}
-      .content{padding:24px 16px;}
-      .topbar{padding:14px 16px;}
-      .menu-toggle{display:block;}
-      .factors-grid{grid-template-columns:1fr;}
-      .match-teams{padding:16px;}
-      .team-flag{font-size:30px;}
-    }
-    @media print{
-      .sidebar,.topbar,.menu-toggle{display:none!important;}
-      .main{margin-left:0!important;}
-      .content{padding:20px!important;}
-      .match-card,section{break-inside:avoid;}
-      a{color:inherit!important;text-decoration:none!important;}
-    }
-    html.dark{
-      --bg:#0f1117;--surface:#1a1b26;--surface-2:#1e2030;--border:#2a2d4a;
-      --text:#c0caf5;--text-muted:#787c99;--accent:#7aa2f7;
-      --green:#9ece6a;--yellow:#e0af68;--red:#f7768e;--cyan:#7dcfff;
-    }
-    html.dark .callout.info{background:rgba(122,162,247,.08);color:#9ab3f5;}
-    html.dark .callout.success{background:rgba(158,206,106,.08);color:#b9da84;}
-    html.dark .callout.warning{background:rgba(224,175,104,.08);color:#e0af68;}
-    html.dark .callout.danger{background:rgba(247,118,142,.08);color:#f7768e;}
-    ::-webkit-scrollbar{width:6px;height:6px;}
-    ::-webkit-scrollbar-track{background:transparent;}
-    ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+    @media(max-width:768px){.sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0);box-shadow:4px 0 30px rgba(0,0,0,.15)}.main{margin-left:0}.content{padding:24px 16px}.topbar{padding:14px 16px}.menu-toggle{display:block}.factors-grid{grid-template-columns:1fr}.match-teams{padding:16px}.team-flag{font-size:28px}}
+    @media print{.sidebar,.topbar,.menu-toggle{display:none!important}.main{margin-left:0!important}.content{padding:20px!important}.match-card,section{break-inside:avoid}a{color:inherit!important;text-decoration:none!important}}
+    html.dark{--bg:#0f1117;--surface:#1a1b26;--surface-2:#1e2030;--border:#2a2d4a;--text:#c0caf5;--text-muted:#787c99;--accent:#7aa2f7;--green:#9ece6a;--yellow:#e0af68;--red:#f7768e;--cyan:#7dcfff;}
+    html.dark .callout.info{background:rgba(122,162,247,.08);color:#9ab3f5;}html.dark .callout.success{background:rgba(158,206,106,.08);color:#b9da84;}html.dark .callout.warning{background:rgba(224,175,104,.08);color:#e0af68;}html.dark .callout.danger{background:rgba(247,118,142,.08);color:#f7768e;}
+    ::-webkit-scrollbar{width:6px;height:6px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
   </style>
 </head>
 <body>
 <div class="layout">
   <nav class="sidebar" id="sidebar">
     <div class="sidebar-header">
-      <div>
-        <div class="sidebar-title">Predicciones</div>
-        <div class="sidebar-doc-title">Mundial 2026 — Primera Ronda</div>
-      </div>
+      <div><div class="sidebar-title">Predicciones</div><div class="sidebar-doc-title">Mundial 2026 — Primera Ronda</div></div>
       <button class="sidebar-collapse-btn" onclick="toggleSidebarCollapse()" id="collapse-btn">‹</button>
     </div>
     <ul class="nav-list" id="nav-list"></ul>
-    <div class="sidebar-footer">Actualizado 14 jun 2026<br>48 selecciones · 12 grupos</div>
+    <div class="sidebar-footer">Actualizado 16 jun 2026<br>48 selecciones · 12 grupos</div>
   </nav>
-
   <div class="main" id="main-content">
     <div class="topbar">
       <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
       <span class="topbar-crumb"><strong>FIFA World Cup 2026</strong> — Predicciones</span>
-      <span class="topbar-badge">8 jugados · 16 pendientes</span>
+      <span class="topbar-badge">16 jugados · 8 pendientes · 50% efectividad</span>
       <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">☀️</button>
     </div>
-
     <div class="content">
 
       <div class="hero-status">
         <div class="hero-indicator">⚽</div>
         <div class="hero-body">
-          <div class="hero-state warn">8 partidos jugados — seguimiento en vivo</div>
-          <div class="hero-verdict">Actualizado al 14 de junio · predicciones vs resultados reales de la primera ronda.</div>
+          <div class="hero-state warn">16 partidos jugados — Jornada 6 en curso</div>
+          <div class="hero-verdict">Actualizado al 16 de junio · Jun 15 fue histórico: ¡todos los partidos terminaron en empate!</div>
           <div class="hero-counts">
-            <div class="hero-count neutral"><span class="count-num">8</span> Jugados</div>
-            <div class="hero-count neutral"><span class="count-num">16</span> Pendientes</div>
-            <div class="hero-count green"><span class="count-num">3</span> ✓✓ Exactos</div>
-            <div class="hero-count blue"><span class="count-num">2</span> ✓ Ganador</div>
-            <div class="hero-count red"><span class="count-num">3</span> ✗ Fallo</div>
+            <div class="hero-count neutral"><span class="count-num">16</span> Jugados</div>
+            <div class="hero-count neutral"><span class="count-num">8</span> Pendientes</div>
+            <div class="hero-count green"><span class="count-num">4</span> ✓✓ Exactos</div>
+            <div class="hero-count blue"><span class="count-num">4</span> ✓ Ganador</div>
+            <div class="hero-count red"><span class="count-num">8</span> ✗ Fallos</div>
           </div>
         </div>
       </div>
 
       <div class="cards-grid">
-        <div class="card"><div class="card-title">Exactos (score)</div><div class="card-value green">3</div></div>
-        <div class="card"><div class="card-title">Ganador correcto</div><div class="card-value blue">2</div></div>
-        <div class="card"><div class="card-title">Fallos / Sorpresas</div><div class="card-value red">3</div></div>
-        <div class="card"><div class="card-title">Efectividad</div><div class="card-value">67%</div></div>
+        <div class="card"><div class="card-title">Exactos (score)</div><div class="card-value green">4</div></div>
+        <div class="card"><div class="card-title">Ganador correcto</div><div class="card-value blue">4</div></div>
+        <div class="card"><div class="card-title">Fallos / Sorpresas</div><div class="card-value red">8</div></div>
+        <div class="card"><div class="card-title">Efectividad</div><div class="card-value yellow">50%</div></div>
       </div>
 
-      <div class="callout warning"><strong>🚨 Sorpresa del torneo (hasta ahora)</strong> Australia venció 2-0 a Turquía — predijimos Turquía 1-0. La inversión más inesperada de la primera semana. ¡Irankunda fue figura!</div>
+      <div class="callout danger"><strong>🤯 Jun 15 — Día histórico: 4 de 4 empates</strong> España 0-0 Cabo Verde (la mayor sorpresa), Bélgica 1-1 Egipto, Arabia Saudita 1-1 Uruguay, Irán 2-2 Nueva Zelanda. Nunca en la historia del Mundial todos los partidos del día terminaron en empate.</div>
+      <div class="callout warning"><strong>🚨 Sorpresas del torneo</strong> España no pudo con Cabo Verde (debut) · Australia 2-0 Turquía · Holanda 2-2 Japón · todos los favoritos del 15 empataron.</div>
 
-      <!-- ══ JUN 11: RESULTADOS ══ -->
+      <!-- ══ JUN 11 ══ -->
       <section id="jun-11" data-icon="✅">
         <h2>✅ Jueves 11 de Junio — Resultados <a class="permalink" href="#jun-11">#</a></h2>
-        <div class="callout success"><strong>Resultados confirmados</strong> Dos partidos inauguraron el torneo. Ambas predicciones correctas.</div>
-
         <div class="match-card exact">
-          <div class="match-header">
-            <div class="match-meta"><span class="badge green">Grupo A</span><span class="match-time">🕒 AT&T Stadium, Dallas</span></div>
-            <span class="badge green">✓✓ Predicción exacta</span>
-          </div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇲🇽</div><div class="team-name">México</div><div class="team-rank">Anfitrión</div></div>
-            <div class="vs-block"><div class="vs-text">VS</div><div class="actual-score-display">2 — 0</div></div>
-            <div class="team-block"><div class="team-flag">🇿🇦</div><div class="team-name">Sudáfrica</div></div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block">
-              <span class="pred-label">Predicción</span><span class="pred-result">México 2 — 0</span>
-              <span class="badge green">✓✓ Exacto</span>
-            </div>
-            <div class="insight-block">México dominó con autoridad en casa. Partido controlado.</div>
-          </div>
+          <div class="match-header"><div class="match-meta"><span class="badge green">Grupo A</span><span class="match-time">AT&T Stadium, Dallas</span></div><span class="badge green">✓✓ Exacto</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇲🇽</div><div class="team-name">México</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="actual-score-display">2 — 0</div></div><div class="team-block"><div class="team-flag">🇿🇦</div><div class="team-name">Sudáfrica</div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Pred.</span><span class="pred-result">Méx 2-0</span><span class="badge green">✓✓ Exacto</span></div><div class="insight-block">México dominó con autoridad en casa.</div></div>
         </div>
-
         <div class="match-card exact">
-          <div class="match-header">
-            <div class="match-meta"><span class="badge green">Grupo A</span><span class="match-time">🕒 Estadio BBVA, Guadalajara</span></div>
-            <span class="badge green">✓✓ Predicción exacta</span>
-          </div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇰🇷</div><div class="team-name">Corea del Sur</div></div>
-            <div class="vs-block"><div class="vs-text">VS</div><div class="actual-score-display">2 — 1</div></div>
-            <div class="team-block"><div class="team-flag">🇨🇿</div><div class="team-name">Chequia</div></div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block">
-              <span class="pred-label">Predicción</span><span class="pred-result">Corea del Sur 2 — 1</span>
-              <span class="badge green">✓✓ Exacto</span>
-            </div>
-            <div class="insight-block">Partido vibrante. Corea se impuso con carácter en el tramo final.</div>
-          </div>
+          <div class="match-header"><div class="match-meta"><span class="badge green">Grupo A</span><span class="match-time">Estadio BBVA, Guadalajara</span></div><span class="badge green">✓✓ Exacto</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇰🇷</div><div class="team-name">Corea del Sur</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="actual-score-display">2 — 1</div></div><div class="team-block"><div class="team-flag">🇨🇿</div><div class="team-name">Chequia</div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Pred.</span><span class="pred-result">Corea 2-1</span><span class="badge green">✓✓ Exacto</span></div><div class="insight-block">Partido vibrante. Corea ganó con carácter.</div></div>
         </div>
       </section>
 
-      <!-- ══ JUN 12: RESULTADOS ══ -->
+      <!-- ══ JUN 12 ══ -->
       <section id="jun-12" data-icon="✅">
         <h2>✅ Viernes 12 de Junio — Resultados <a class="permalink" href="#jun-12">#</a></h2>
-
-        <!-- Canada 1-1 Bosnia -->
         <div class="match-card fail">
-          <div class="match-header">
-            <div class="match-meta"><span class="badge blue">Grupo B</span><span class="match-time">🕒 3:00 PM ET · BMO Field, Toronto</span></div>
-            <span class="badge red">✗ Empate sorpresa</span>
-          </div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇨🇦</div><div class="team-name">Canadá</div><div class="team-rank">Anfitrión</div></div>
-            <div class="vs-block">
-              <div class="vs-text">VS</div>
-              <div class="actual-score-display">1 — 1</div>
-              <div class="pred-score-display">pred: 1 — 0</div>
-            </div>
-            <div class="team-block"><div class="team-flag">🇧🇦</div><div class="team-name">Bosnia-Herz.</div></div>
-          </div>
-          <div class="match-body">
-            <div class="factors-title">Cómo fue</div>
-            <div class="factors-grid">
-              <div class="factor-item"><div class="factor-label">Gol Bosnia</div><div class="factor-value">Jovo Lukić (cabezazo desde córner)</div></div>
-              <div class="factor-item"><div class="factor-label">Gol Canadá</div><div class="factor-value">Cyle Larin (min. 78) — empate heroico</div></div>
-              <div class="factor-item"><div class="factor-label">Hito histórico</div><div class="factor-value">1er punto de Canadá en toda su historia mundialista</div></div>
-              <div class="factor-item"><div class="factor-label">Sin Davies</div><div class="factor-value">La ausencia pesó. Bosnia supo aprovechar</div></div>
-            </div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block">
-              <span class="pred-label">Predicción</span><span class="pred-strike">Canadá 1-0</span>
-              <span class="actual-result">1 — 1</span>
-              <span class="badge red">✗ Fallo</span>
-            </div>
-            <div class="insight-block">Bosnia fue más peligroso de lo esperado. Sin Davies, Canadá tuvo que remar de atrás.</div>
-          </div>
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo B</span><span class="match-time">BMO Field, Toronto</span></div><span class="badge red">✗ Empate</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇨🇦</div><div class="team-name">Canadá</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="actual-score-display">1 — 1</div><div class="pred-score-display">pred: Canadá 1-0</div></div><div class="team-block"><div class="team-flag">🇧🇦</div><div class="team-name">Bosnia</div></div></div>
+          <div class="match-body"><div class="factors-title">Cómo fue</div><div class="factors-grid"><div class="factor-item"><div class="factor-label">Goles</div><div class="factor-value">Lukić (Bosnia) · Larin min. 78 (Canadá)</div></div><div class="factor-item"><div class="factor-label">Hito</div><div class="factor-value">1er punto de Canadá en toda su historia mundialista</div></div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Pred.</span><span class="pred-strike">Canadá 1-0</span><span class="actual-result">1 — 1</span><span class="badge red">✗ Fallo</span></div><div class="insight-block">Bosnia fue más peligroso sin Davies. Empate histórico para Canadá.</div></div>
         </div>
-
-        <!-- USA 4-1 Paraguay -->
         <div class="match-card winner">
-          <div class="match-header">
-            <div class="match-meta"><span class="badge blue">Grupo D</span><span class="match-time">🕒 9:00 PM ET · SoFi Stadium, Los Ángeles</span></div>
-            <span class="badge blue">✓ Ganador correcto</span>
-          </div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇺🇸</div><div class="team-name">USA</div><div class="team-rank">Anfitrión</div></div>
-            <div class="vs-block">
-              <div class="vs-text">VS</div>
-              <div class="actual-score-display">4 — 1</div>
-              <div class="pred-score-display">pred: 2 — 1</div>
-            </div>
-            <div class="team-block"><div class="team-flag">🇵🇾</div><div class="team-name">Paraguay</div></div>
-          </div>
-          <div class="match-body">
-            <div class="factors-title">Cómo fue</div>
-            <div class="factors-grid">
-              <div class="factor-item"><div class="factor-label">Figura</div><div class="factor-value">Folarin Balogun — 2 goles en 1er tiempo</div></div>
-              <div class="factor-item"><div class="factor-label">Otros goles USA</div><div class="factor-value">OG Bobadilla + Gio Reyna</div></div>
-              <div class="factor-item"><div class="factor-label">Récord histórico</div><div class="factor-value">Mayor goleada de USMNT en una Copa del Mundo</div></div>
-              <div class="factor-item"><div class="factor-label">Asistencia</div><div class="factor-value">70,492 espectadores en SoFi</div></div>
-            </div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block">
-              <span class="pred-label">Predicción</span><span class="pred-strike">USA 2-1</span>
-              <span class="actual-result">USA 4 — 1</span>
-              <span class="badge blue">✓ Ganador (subestimamos a USA)</span>
-            </div>
-            <div class="insight-block">USA fue mucho mejor de lo esperado. Balogun fue una pesadilla para Paraguay.</div>
-          </div>
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo D</span><span class="match-time">SoFi Stadium, Los Ángeles</span></div><span class="badge blue">✓ Ganador</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇺🇸</div><div class="team-name">USA</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="actual-score-display">4 — 1</div><div class="pred-score-display">pred: USA 2-1</div></div><div class="team-block"><div class="team-flag">🇵🇾</div><div class="team-name">Paraguay</div></div></div>
+          <div class="match-body"><div class="factors-title">Cómo fue</div><div class="factors-grid"><div class="factor-item"><div class="factor-label">Figura</div><div class="factor-value">Folarin Balogun — 2 goles en el 1er tiempo</div></div><div class="factor-item"><div class="factor-label">Récord</div><div class="factor-value">Mayor goleada del USMNT en historia mundialista</div></div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Pred.</span><span class="pred-strike">USA 2-1</span><span class="actual-result">USA 4 — 1</span><span class="badge blue">✓ Ganador (subestimamos)</span></div><div class="insight-block">USA fue mucho mejor de lo esperado. Balogun fenomenal.</div></div>
         </div>
       </section>
 
-      <!-- ══ JUN 13: RESULTADOS ══ -->
+      <!-- ══ JUN 13 ══ -->
       <section id="jun-13" data-icon="✅">
         <h2>✅ Sábado 13 de Junio — Resultados <a class="permalink" href="#jun-13">#</a></h2>
-
-        <!-- Qatar 1-1 Switzerland -->
         <div class="match-card fail">
-          <div class="match-header">
-            <div class="match-meta"><span class="badge blue">Grupo B</span><span class="match-time">🕒 3:00 PM ET · Levi's Stadium, SF</span></div>
-            <span class="badge red">✗ Qatar aguantó el empate</span>
-          </div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇶🇦</div><div class="team-name">Qatar</div></div>
-            <div class="vs-block">
-              <div class="vs-text">VS</div>
-              <div class="actual-score-display">1 — 1</div>
-              <div class="pred-score-display">pred: 0 — 2</div>
-            </div>
-            <div class="team-block"><div class="team-flag">🇨🇭</div><div class="team-name">Suiza</div></div>
-          </div>
-          <div class="match-body">
-            <div class="factors-title">Cómo fue</div>
-            <div class="factors-grid">
-              <div class="factor-item"><div class="factor-label">Gol tardío Qatar</div><div class="factor-value">Boualem Khoukhi a último momento</div></div>
-              <div class="factor-item"><div class="factor-label">Suiza</div><div class="factor-value">Dominó el partido pero no pudo cerrar</div></div>
-              <div class="factor-item"><div class="factor-label">Sorpresa</div><div class="factor-value">Qatar se lleva un punto inesperado en USA</div></div>
-              <div class="factor-item"><div class="factor-label">Grupo B</div><div class="factor-value">Ahora más abierto — Canadá también empató</div></div>
-            </div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block">
-              <span class="pred-label">Predicción</span><span class="pred-strike">Suiza 2-0</span>
-              <span class="actual-result">1 — 1</span>
-              <span class="badge red">✗ Fallo</span>
-            </div>
-            <div class="insight-block">Suiza dominó pero no finalizó. Qatar resistió y robó el empate en el descuento.</div>
-          </div>
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo B</span><span class="match-time">Levi's Stadium, San Francisco</span></div><span class="badge red">✗ Qatar aguantó</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇶🇦</div><div class="team-name">Qatar</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="actual-score-display">1 — 1</div><div class="pred-score-display">pred: Suiza 2-0</div></div><div class="team-block"><div class="team-flag">🇨🇭</div><div class="team-name">Suiza</div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Pred.</span><span class="pred-strike">Suiza 2-0</span><span class="actual-result">1 — 1</span><span class="badge red">✗ Fallo</span></div><div class="insight-block">Khoukhi empató en el descuento. Qatar robó un punto inesperado.</div></div>
         </div>
-
-        <!-- Brazil 1-1 Morocco -->
         <div class="match-card exact">
-          <div class="match-header">
-            <div class="match-meta"><span class="badge blue">Grupo C</span><span class="match-time">🕒 6:00 PM ET · MetLife Stadium, NJ</span></div>
-            <span class="badge green">✓✓ Predicción exacta</span>
-          </div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇧🇷</div><div class="team-name">Brasil</div><div class="team-rank">Ancelotti DT</div></div>
-            <div class="vs-block">
-              <div class="vs-text">VS</div>
-              <div class="actual-score-display">1 — 1</div>
-            </div>
-            <div class="team-block"><div class="team-flag">🇲🇦</div><div class="team-name">Marruecos</div></div>
-          </div>
-          <div class="match-body">
-            <div class="factors-title">Cómo fue</div>
-            <div class="factors-grid">
-              <div class="factor-item"><div class="factor-label">Neymar</div><div class="factor-value">No jugó — se confirmó la lesión</div></div>
-              <div class="factor-item"><div class="factor-label">Resultado</div><div class="factor-value">Empate justo, como anticipamos</div></div>
-              <div class="factor-item"><div class="factor-label">Marruecos</div><div class="factor-value">Hakimi y Brahim Díaz fueron peligrosos</div></div>
-              <div class="factor-item"><div class="factor-label">Grupo C</div><div class="factor-value">Muy parejo — Haiti/Escocia también en carrera</div></div>
-            </div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block">
-              <span class="pred-label">Predicción</span><span class="pred-result">1 — 1</span>
-              <span class="badge green">✓✓ Exacto 🎯</span>
-            </div>
-            <div class="insight-block">La predicción más difícil del torneo y fue exacta. Marruecos demostró ser un rival de élite.</div>
-          </div>
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo C</span><span class="match-time">MetLife Stadium, Nueva Jersey</span></div><span class="badge green">✓✓ Exacto 🎯</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇧🇷</div><div class="team-name">Brasil</div><div class="team-rank">Ancelotti DT</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="actual-score-display">1 — 1</div></div><div class="team-block"><div class="team-flag">🇲🇦</div><div class="team-name">Marruecos</div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Pred.</span><span class="pred-result">1 — 1</span><span class="badge green">✓✓ Exacto 🎯</span></div><div class="insight-block">La predicción más difícil del torneo. Neymar no jugó, Marruecos demostró ser élite.</div></div>
         </div>
-
-        <!-- Scotland 1-0 Haiti -->
         <div class="match-card winner">
-          <div class="match-header">
-            <div class="match-meta"><span class="badge blue">Grupo C</span><span class="match-time">🕒 9:00 PM ET · Gillette Stadium, Boston</span></div>
-            <span class="badge blue">✓ Ganador correcto</span>
-          </div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇭🇹</div><div class="team-name">Haití</div></div>
-            <div class="vs-block">
-              <div class="vs-text">VS</div>
-              <div class="actual-score-display">0 — 1</div>
-              <div class="pred-score-display">pred: 1 — 2</div>
-            </div>
-            <div class="team-block"><div class="team-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div><div class="team-name">Escocia</div></div>
-          </div>
-          <div class="match-body">
-            <div class="factors-title">Cómo fue</div>
-            <div class="factors-grid">
-              <div class="factor-item"><div class="factor-label">Gol único</div><div class="factor-value">John McGinn min. 28 — remate desde córner</div></div>
-              <div class="factor-item"><div class="factor-label">Haití</div><div class="factor-value">Más organizado de lo esperado, no pudo rematar</div></div>
-              <div class="factor-item"><div class="factor-label">Escocia</div><div class="factor-value">Ganó sufriendo — no fue la goleada que se esperaba</div></div>
-              <div class="factor-item"><div class="factor-label">Partido</div><div class="factor-value">Más cerrado que el pronóstico indicaba</div></div>
-            </div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block">
-              <span class="pred-label">Predicción</span><span class="pred-strike">Escocia 2-1</span>
-              <span class="actual-result">Escocia 1 — 0</span>
-              <span class="badge blue">✓ Ganador correcto</span>
-            </div>
-            <div class="insight-block">Acertamos el ganador pero el partido fue más cerrado. Haití defendió muy bien.</div>
-          </div>
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo C</span><span class="match-time">Gillette Stadium, Boston</span></div><span class="badge blue">✓ Ganador</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇭🇹</div><div class="team-name">Haití</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="actual-score-display">0 — 1</div><div class="pred-score-display">pred: Escocia 2-1</div></div><div class="team-block"><div class="team-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div><div class="team-name">Escocia</div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Pred.</span><span class="pred-strike">Escocia 2-1</span><span class="actual-result">Escocia 1 — 0</span><span class="badge blue">✓ Ganador</span></div><div class="insight-block">McGinn min.28. Haití defendió muy bien, partido más cerrado que el pronóstico.</div></div>
         </div>
       </section>
 
-      <!-- ══ JUN 14: PARCIAL ══ -->
-      <section id="jun-14" data-icon="⚽">
-        <h2>⚽ Domingo 14 de Junio — En curso <a class="permalink" href="#jun-14">#</a></h2>
-        <div class="callout info"><strong>Nota:</strong> Primeros 2 partidos jugados. Los 3 restantes se juegan hoy más tarde.</div>
+      <!-- ══ JUN 14 ══ -->
+      <section id="jun-14" data-icon="✅">
+        <h2>✅ Domingo 14 de Junio — Resultados <a class="permalink" href="#jun-14">#</a></h2>
+        <div class="callout warning"><strong>🚨 Sorpresa del día:</strong> Australia 2-0 Turquía · Suecia goleó 5-1 a Túnez · Alemania arrasó 7-1 · Holanda-Japón terminó 2-2.</div>
 
-        <!-- Australia 2-0 Turkey — SORPRESA -->
         <div class="match-card surprise">
-          <div class="match-header">
-            <div class="match-meta"><span class="badge blue">Grupo D</span><span class="match-time">🕒 12:00 AM ET · BC Place, Vancouver</span></div>
-            <span class="badge orange">🚨 SORPRESA — Australia ganó</span>
-          </div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇦🇺</div><div class="team-name">Australia</div></div>
-            <div class="vs-block">
-              <div class="vs-text">VS</div>
-              <div class="actual-score-display">2 — 0</div>
-              <div class="pred-score-display">pred: 0 — 1 Turquía</div>
-            </div>
-            <div class="team-block"><div class="team-flag">🇹🇷</div><div class="team-name">Turquía</div></div>
-          </div>
-          <div class="match-body">
-            <div class="factors-title">Cómo fue</div>
-            <div class="factors-grid">
-              <div class="factor-item"><div class="factor-label">Figura</div><div class="factor-value">Nestory Irankunda — primer gol min. 27</div></div>
-              <div class="factor-item"><div class="factor-label">2do gol</div><div class="factor-value">Connor Metcalfe min. 75 — sentencia el partido</div></div>
-              <div class="factor-item"><div class="factor-label">Sorpresa</div><div class="factor-value">Turquía sin Arda Güler al nivel esperado</div></div>
-              <div class="factor-item"><div class="factor-label">Impacto</div><div class="factor-value">Grupo D completamente abierto con USA líder</div></div>
-            </div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block">
-              <span class="pred-label">Predicción</span><span class="pred-strike">Turquía 1-0</span>
-              <span class="actual-result">Australia 2 — 0</span>
-              <span class="badge orange">🚨 Sorpresa total</span>
-            </div>
-            <div class="insight-block">La sorpresa del torneo. Australia fue claramente superior y Turquía decepcionó por completo.</div>
-          </div>
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo D</span><span class="match-time">BC Place, Vancouver</span></div><span class="badge orange">🚨 Sorpresa</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇦🇺</div><div class="team-name">Australia</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="actual-score-display">2 — 0</div><div class="pred-score-display">pred: Turquía 1-0</div></div><div class="team-block"><div class="team-flag">🇹🇷</div><div class="team-name">Turquía</div></div></div>
+          <div class="match-body"><div class="factors-title">Cómo fue</div><div class="factors-grid"><div class="factor-item"><div class="factor-label">Figura</div><div class="factor-value">Irankunda min. 27 + Metcalfe min. 75</div></div><div class="factor-item"><div class="factor-label">Impacto</div><div class="factor-value">Turquía sin Arda Güler al nivel esperado</div></div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Pred.</span><span class="pred-strike">Turquía 1-0</span><span class="actual-result">Australia 2 — 0</span><span class="badge orange">🚨 Sorpresa</span></div><div class="insight-block">Australia fue claramente superior. Turquía decepcionó por completo.</div></div>
         </div>
 
-        <!-- Germany vs Curacao — PENDIENTE -->
-        <div class="match-card">
-          <div class="match-header">
-            <div class="match-meta"><span class="badge blue">Grupo E</span><span class="match-time">🕒 1:00 PM ET · NRG Stadium, Houston</span></div>
-            <span class="badge yellow">⏳ Pendiente hoy</span>
-          </div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇩🇪</div><div class="team-name">Alemania</div><div class="team-rank">4x Campeón · Ranking #10</div></div>
-            <div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">4 — 0</div></div>
-            <div class="team-block"><div class="team-flag">🇨🇼</div><div class="team-name">Curazao</div><div class="team-rank">⭐ Debut absoluto</div></div>
-          </div>
-          <div class="match-body">
-            <div class="factors-title">Factores clave</div>
-            <div class="factors-grid">
-              <div class="factor-item"><div class="factor-label">Alemania</div><div class="factor-value">Musiala + Wirtz + Havertz — tridente de élite</div></div>
-              <div class="factor-item"><div class="factor-label">Curazao</div><div class="factor-value">Debut histórico, brecha enorme</div></div>
-              <div class="factor-item"><div class="factor-label">Cuotas</div><div class="factor-value">Alemania a 1/20 — la más clara del torneo</div></div>
-              <div class="factor-item"><div class="factor-label">Señal</div><div class="factor-value">Alemania necesita marcar diferencia de goles</div></div>
-            </div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Alemania 4 — 0 Curazao</span><span class="badge green">Confianza Muy Alta</span></div>
-            <div class="insight-block">Sin sorpresas esperadas. Alemania golpea fuerte para enviar mensaje al grupo.</div>
-          </div>
+        <div class="match-card winner">
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo E</span><span class="match-time">NRG Stadium, Houston</span></div><span class="badge blue">✓ Ganador</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇩🇪</div><div class="team-name">Alemania</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="actual-score-display">7 — 1</div><div class="pred-score-display">pred: 4-0</div></div><div class="team-block"><div class="team-flag">🇨🇼</div><div class="team-name">Curazao</div></div></div>
+          <div class="match-body"><div class="factors-title">Cómo fue</div><div class="factors-grid"><div class="factor-item"><div class="factor-label">Goles Alemania</div><div class="factor-value">Nmecha, Schlotterbeck, Havertz ×2, Brown, Undav, Musiala</div></div><div class="factor-item"><div class="factor-label">Curazao</div><div class="factor-value">Comenecia marcó — memorable debut histórico con gol incluido</div></div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Pred.</span><span class="pred-strike">Alemania 4-0</span><span class="actual-result">Alemania 7 — 1</span><span class="badge blue">✓ Ganador (¡nos quedamos cortos!)</span></div><div class="insight-block">Predijimos la goleada pero no la magnitud. Alemania fue demoledora.</div></div>
         </div>
 
-        <!-- Netherlands vs Japan — PENDIENTE -->
-        <div class="match-card">
-          <div class="match-header">
-            <div class="match-meta"><span class="badge blue">Grupo F</span><span class="match-time">🕒 4:00 PM ET · AT&T Stadium, Arlington TX</span></div>
-            <span class="badge yellow">⏳ Pendiente hoy</span>
-          </div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇳🇱</div><div class="team-name">Países Bajos</div><div class="team-rank">Ranking #7</div></div>
-            <div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">2 — 1</div></div>
-            <div class="team-block"><div class="team-flag">🇯🇵</div><div class="team-name">Japón</div><div class="team-rank">Venció a Brasil e Inglaterra (amistosos)</div></div>
-          </div>
-          <div class="match-body">
-            <div class="factors-title">Factores clave</div>
-            <div class="factors-grid">
-              <div class="factor-item"><div class="factor-label">Países Bajos</div><div class="factor-value">Gakpo (7 goles PL) · Van Dijk en defensa</div></div>
-              <div class="factor-item"><div class="factor-label">Japón</div><div class="factor-value">Ueda (25 goles Eredivisie) — el candidato a sorpresa</div></div>
-              <div class="factor-item"><div class="factor-label">Cuotas</div><div class="factor-value">Insólitamente cerradas: Holanda +100, Japón +240</div></div>
-              <div class="factor-item"><div class="factor-label">Tras Australia</div><div class="factor-value">Las sorpresas del WC abundan — ojo con Japón</div></div>
-            </div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block">
-              <span class="pred-label">Predicción</span><span class="pred-result">Países Bajos 2 — 1 Japón</span>
-              <span class="badge yellow">Confianza Media</span>
-            </div>
-            <div class="insight-block">⚡ El partido más abierto del día. Japón puede ganar — Australia lo demostró hoy.</div>
-          </div>
+        <div class="match-card fail">
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo F</span><span class="match-time">AT&T Stadium, Arlington TX</span></div><span class="badge red">✗ Empate (Japón lo advirtió)</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇳🇱</div><div class="team-name">Países Bajos</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="actual-score-display">2 — 2</div><div class="pred-score-display">pred: P. Bajos 2-1</div></div><div class="team-block"><div class="team-flag">🇯🇵</div><div class="team-name">Japón</div></div></div>
+          <div class="match-body"><div class="factors-title">Cómo fue</div><div class="factors-grid"><div class="factor-item"><div class="factor-label">Japón</div><div class="factor-value">Empató con un gol tardío — Ueda brilló</div></div><div class="factor-item"><div class="factor-label">Advertimos</div><div class="factor-value">"Japón puede dar la campanada" — y lo hizo</div></div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Pred.</span><span class="pred-strike">P. Bajos 2-1</span><span class="actual-result">2 — 2</span><span class="badge red">✗ Fallo</span></div><div class="insight-block">Lo advertimos pero igual nos equivocamos. Japón demostró que puede con cualquiera.</div></div>
         </div>
 
-        <!-- Ivory Coast vs Ecuador — PENDIENTE -->
-        <div class="match-card">
-          <div class="match-header">
-            <div class="match-meta"><span class="badge blue">Grupo E</span><span class="match-time">🕒 7:00 PM ET · Lincoln Financial, Filadelfia</span></div>
-            <span class="badge yellow">⏳ Pendiente hoy</span>
-          </div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇨🇮</div><div class="team-name">Costa de Marfil</div></div>
-            <div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">1 — 0</div></div>
-            <div class="team-block"><div class="team-flag">🇪🇨</div><div class="team-name">Ecuador</div></div>
-          </div>
-          <div class="match-body">
-            <div class="factors-title">Factores clave</div>
-            <div class="factors-grid">
-              <div class="factor-item"><div class="factor-label">C. de Marfil</div><div class="factor-value">Clasificación africana sin goles en contra</div></div>
-              <div class="factor-item"><div class="factor-label">Ecuador</div><div class="factor-value">Beccacece — hermético y difícil de batir</div></div>
-              <div class="factor-item"><div class="factor-label">Contexto</div><div class="factor-value">Ambas persiguen el 2do lugar tras Alemania</div></div>
-              <div class="factor-item"><div class="factor-label">Tras Alemania 4-0</div><div class="factor-value">La presión de diferencia de gol ya pesa</div></div>
-            </div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block">
-              <span class="pred-label">Predicción</span><span class="pred-result">C. de Marfil 1 — 0 Ecuador</span>
-              <span class="badge cyan">Confianza Media-Alta</span>
-            </div>
-            <div class="insight-block">Partido muy disputado. C. de Marfil tiene mayor profundidad ofensiva para quebrar el bloque.</div>
-          </div>
+        <div class="match-card exact">
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo E</span><span class="match-time">Lincoln Financial, Filadelfia</span></div><span class="badge green">✓✓ Exacto 🎯</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇨🇮</div><div class="team-name">Costa de Marfil</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="actual-score-display">1 — 0</div></div><div class="team-block"><div class="team-flag">🇪🇨</div><div class="team-name">Ecuador</div></div></div>
+          <div class="match-body"><div class="factors-title">Cómo fue</div><div class="factors-grid"><div class="factor-item"><div class="factor-label">Gol</div><div class="factor-value">Amad Diallo min. 90 — dramático ganador</div></div><div class="factor-item"><div class="factor-label">Contexto</div><div class="factor-value">Terminó racha invicta de Ecuador (19 partidos)</div></div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Pred.</span><span class="pred-result">C. de Marfil 1-0</span><span class="badge green">✓✓ Exacto 🎯</span></div><div class="insight-block">¡Amad Diallo en el minuto 90! Predijimos el score exacto.</div></div>
         </div>
 
-        <!-- Sweden vs Tunisia — PENDIENTE -->
-        <div class="match-card">
-          <div class="match-header">
-            <div class="match-meta"><span class="badge blue">Grupo F</span><span class="match-time">🕒 10:00 PM ET · Estadio BBVA, Monterrey</span></div>
-            <span class="badge yellow">⏳ Pendiente hoy</span>
-          </div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇸🇪</div><div class="team-name">Suecia</div></div>
-            <div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">2 — 1</div></div>
-            <div class="team-block"><div class="team-flag">🇹🇳</div><div class="team-name">Túnez</div></div>
-          </div>
-          <div class="match-body">
-            <div class="factors-title">Factores clave</div>
-            <div class="factors-grid">
-              <div class="factor-item"><div class="factor-label">Suecia</div><div class="factor-value">Motivados por el regreso al Mundial</div></div>
-              <div class="factor-item"><div class="factor-label">Túnez</div><div class="factor-value">Sólidos atrás, limitados arriba</div></div>
-              <div class="factor-item"><div class="factor-label">Grupo F</div><div class="factor-value">Holanda-Japón decide la jerarquía — este es clave para 3ro</div></div>
-              <div class="factor-item"><div class="factor-label">Calor Monterrey</div><div class="factor-value">Puede beneficiar al equipo más físico (Suecia)</div></div>
-            </div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block">
-              <span class="pred-label">Predicción</span><span class="pred-result">Suecia 2 — 1 Túnez</span>
-              <span class="badge cyan">Confianza Media-Alta</span>
-            </div>
-            <div class="insight-block">Suecia gana por mayor calidad colectiva. Partido físico con goles en ambos arcos.</div>
-          </div>
+        <div class="match-card winner">
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo F</span><span class="match-time">Estadio BBVA, Monterrey</span></div><span class="badge blue">✓ Ganador</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇸🇪</div><div class="team-name">Suecia</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="actual-score-display">5 — 1</div><div class="pred-score-display">pred: Suecia 2-1</div></div><div class="team-block"><div class="team-flag">🇹🇳</div><div class="team-name">Túnez</div></div></div>
+          <div class="match-body"><div class="factors-title">Cómo fue</div><div class="factors-grid"><div class="factor-item"><div class="factor-label">Figuras</div><div class="factor-value">Ayari (2), Isak, Gyokeres, Svanberg</div></div><div class="factor-item"><div class="factor-label">Nota</div><div class="factor-value">Svanberg anotó 16 seg. después de entrar</div></div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Pred.</span><span class="pred-strike">Suecia 2-1</span><span class="actual-result">Suecia 5 — 1</span><span class="badge blue">✓ Ganador (nos quedamos cortos)</span></div><div class="insight-block">Suecia fue demoledora. Gyokeres e Isak en modo Champions League.</div></div>
         </div>
       </section>
 
       <!-- ══ JUN 15 ══ -->
-      <section id="jun-15" data-icon="📅">
-        <h2>📅 Lunes 15 de Junio — Predicciones <a class="permalink" href="#jun-15">#</a></h2>
+      <section id="jun-15" data-icon="🤯">
+        <h2>🤯 Lunes 15 de Junio — El día de los empates históricos <a class="permalink" href="#jun-15">#</a></h2>
+        <div class="callout danger"><strong>HISTÓRICO — 4/4 empates en un mismo día.</strong> Nunca antes en una Copa del Mundo todos los partidos del día terminaron en empate. España no pudo marcarle a Cabo Verde (debut). Todos los favoritos fallaron.</div>
 
-        <div class="match-card">
-          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo H</span><span class="match-time">🕒 12:00 PM ET</span></div><span class="badge red">Goleada esperada</span></div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇪🇸</div><div class="team-name">España</div><div class="team-rank">Campeona de Europa · Ranking #3</div></div>
-            <div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">4 — 0</div></div>
-            <div class="team-block"><div class="team-flag">🇨🇻</div><div class="team-name">Cabo Verde</div><div class="team-rank">⭐ Debut absoluto · Ranking #69</div></div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">España 4 — 0 Cabo Verde</span><span class="badge green">Confianza Muy Alta</span></div>
-            <div class="insight-block">Exhibición española. Yamal hace lo que quiere en su primer Mundial.</div>
-          </div>
+        <div class="match-card surprise">
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo H</span><span class="match-time">12:00 PM ET</span></div><span class="badge orange">🚨 SHOCK — España sin goles</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇪🇸</div><div class="team-name">España</div><div class="team-rank">Campeona de Europa</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="actual-score-display">0 — 0</div><div class="pred-score-display">pred: España 4-0</div></div><div class="team-block"><div class="team-flag">🇨🇻</div><div class="team-name">Cabo Verde</div><div class="team-rank">Debut absoluto</div></div></div>
+          <div class="match-body"><div class="factors-title">Cómo fue</div><div class="factors-grid"><div class="factor-item"><div class="factor-label">Shock</div><div class="factor-value">España dominó pero no encontró el gol</div></div><div class="factor-item"><div class="factor-label">Cabo Verde</div><div class="factor-value">Bloque heroico — debutantes históricos</div></div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Pred.</span><span class="pred-strike">España 4-0</span><span class="actual-result">0 — 0</span><span class="badge orange">🚨 Mayor sorpresa del torneo</span></div><div class="insight-block">La mayor sorpresa del torneo. Cabo Verde en su debut frenó a la Campeona de Europa.</div></div>
         </div>
 
-        <div class="match-card">
-          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo G</span><span class="match-time">🕒 3:00 PM ET · Lumen Field, Seattle</span></div><span class="badge yellow">⚡ Salah factor</span></div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇧🇪</div><div class="team-name">Bélgica</div><div class="team-rank">29 goles en clasificación · Ranking #5</div></div>
-            <div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">2 — 1</div></div>
-            <div class="team-block"><div class="team-flag">🇪🇬</div><div class="team-name">Egipto</div><div class="team-rank">Salah capitán · 0 goles en contra clasificación</div></div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Bélgica 2 — 1 Egipto</span><span class="badge cyan">Confianza Media-Alta</span></div>
-            <div class="insight-block">Salah anota en el contraataque pero Bélgica tiene más profundidad. De Bruyne decide.</div>
-          </div>
+        <div class="match-card fail">
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo G</span><span class="match-time">3:00 PM ET · Lumen Field, Seattle</span></div><span class="badge red">✗ Empate</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇧🇪</div><div class="team-name">Bélgica</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="actual-score-display">1 — 1</div><div class="pred-score-display">pred: Bélgica 2-1</div></div><div class="team-block"><div class="team-flag">🇪🇬</div><div class="team-name">Egipto</div></div></div>
+          <div class="match-body"><div class="factors-title">Cómo fue</div><div class="factors-grid"><div class="factor-item"><div class="factor-label">Salah</div><div class="factor-value">Anotó como se esperaba — figura del partido</div></div><div class="factor-item"><div class="factor-label">Bélgica</div><div class="factor-value">No pudo cerrar pese a dominar el partido</div></div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Pred.</span><span class="pred-strike">Bélgica 2-1</span><span class="actual-result">1 — 1</span><span class="badge red">✗ Fallo</span></div><div class="insight-block">Salah anotó como dijimos, pero Bélgica no pudo ganar. Empate justo.</div></div>
         </div>
 
-        <div class="match-card">
-          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo H</span><span class="match-time">🕒 6:00 PM ET · Hard Rock Stadium, Miami</span></div></div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇸🇦</div><div class="team-name">Arabia Saudita</div><div class="team-rank">Venció a Argentina en Qatar 2022</div></div>
-            <div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">0 — 2</div></div>
-            <div class="team-block"><div class="team-flag">🇺🇾</div><div class="team-name">Uruguay</div><div class="team-rank">Darwin Núñez + Valverde · Ranking #15</div></div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Uruguay 2 — 0 Arabia Saudita</span><span class="badge green">Confianza Alta</span></div>
-            <div class="insight-block">Control charrúa. Uruguay tiene plantel más equilibrado en todas las líneas.</div>
-          </div>
+        <div class="match-card fail">
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo H</span><span class="match-time">6:00 PM ET · Hard Rock, Miami</span></div><span class="badge red">✗ Arabia aguantó</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇸🇦</div><div class="team-name">Arabia Saudita</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="actual-score-display">1 — 1</div><div class="pred-score-display">pred: Uruguay 2-0</div></div><div class="team-block"><div class="team-flag">🇺🇾</div><div class="team-name">Uruguay</div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Pred.</span><span class="pred-strike">Uruguay 2-0</span><span class="actual-result">1 — 1</span><span class="badge red">✗ Fallo</span></div><div class="insight-block">Arabia Saudita tiene el historial de frenar a los campeones. Lo hizo de nuevo.</div></div>
         </div>
 
-        <div class="match-card">
-          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo G</span><span class="match-time">🕒 9:00 PM ET · SoFi Stadium, LA</span></div></div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇮🇷</div><div class="team-name">Irán</div><div class="team-rank">3er Mundial seguido · 3W en amistosos</div></div>
-            <div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">1 — 0</div></div>
-            <div class="team-block"><div class="team-flag">🇳🇿</div><div class="team-name">Nueva Zelanda</div></div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Irán 1 — 0 Nueva Zelanda</span><span class="badge cyan">Confianza Media-Alta</span></div>
-            <div class="insight-block">Partido cerrado. Irán gana por experiencia y un gol de diferencia.</div>
-          </div>
+        <div class="match-card fail">
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo G</span><span class="match-time">9:00 PM ET · SoFi Stadium, LA</span></div><span class="badge red">✗ NZ más goles que esperado</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇮🇷</div><div class="team-name">Irán</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="actual-score-display">2 — 2</div><div class="pred-score-display">pred: Irán 1-0</div></div><div class="team-block"><div class="team-flag">🇳🇿</div><div class="team-name">Nueva Zelanda</div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Pred.</span><span class="pred-strike">Irán 1-0</span><span class="actual-result">2 — 2</span><span class="badge red">✗ Fallo</span></div><div class="insight-block">NZ fue mucho más ofensiva de lo esperado. Partido abierto con 4 goles.</div></div>
         </div>
       </section>
 
       <!-- ══ JUN 16 ══ -->
-      <section id="jun-16" data-icon="📅">
-        <h2>📅 Martes 16 de Junio — Predicciones <a class="permalink" href="#jun-16">#</a></h2>
+      <section id="jun-16" data-icon="🔴">
+        <h2>🔴 Martes 16 de Junio — En curso hoy <a class="permalink" href="#jun-16">#</a></h2>
+        <div class="callout info"><strong>Jornada 6:</strong> Mbappé, Messi y Haaland debutan hoy. Los tres partidos de la tarde/noche están pendientes.</div>
 
         <div class="match-card">
-          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo I</span><span class="match-time">🕒 3:00 PM ET · MetLife, NJ</span></div><span class="badge yellow">⚡ Mbappé vs Mané</span></div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇫🇷</div><div class="team-name">Francia</div><div class="team-rank">Mbappé capitán · Ballon d'Or Dembélé · #2</div></div>
-            <div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">2 — 0</div></div>
-            <div class="team-block"><div class="team-flag">🇸🇳</div><div class="team-name">Senegal</div><div class="team-rank">Mané capitán · Ranking #14</div></div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Francia 2 — 0 Senegal</span><span class="badge cyan">Confianza Media-Alta</span></div>
-            <div class="insight-block">Francia es demasiado buena en ataque. Ojo: Senegal ganó a Francia en WC 2002 (1-0).</div>
-          </div>
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo I</span><span class="match-time">🕒 3:00 PM ET · MetLife, Nueva Jersey</span></div><span class="badge yellow">⏳ Pendiente</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇫🇷</div><div class="team-name">Francia</div><div class="team-rank">Mbappé · Ballon d'Or Dembélé · #2</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">2 — 0</div></div><div class="team-block"><div class="team-flag">🇸🇳</div><div class="team-name">Senegal</div><div class="team-rank">Mané capitán · Ranking #14</div></div></div>
+          <div class="match-body"><div class="factors-title">Factores clave</div><div class="factors-grid"><div class="factor-item"><div class="factor-label">Advertencia</div><div class="factor-value">Senegal ganó a Francia en WC 2002 · Jun 15 cambió todo</div></div><div class="factor-item"><div class="factor-label">Mbappé</div><div class="factor-value">56 goles internacionales — necesita responder</div></div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Francia 2 — 0 Senegal</span><span class="badge cyan">Media-Alta</span></div><div class="insight-block">Tras los empates del 15, Francia necesita demostrar. ¿Puede Senegal sorprender otra vez?</div></div>
         </div>
 
         <div class="match-card">
-          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo I</span><span class="match-time">🕒 6:00 PM ET · Gillette, Boston</span></div></div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇮🇶</div><div class="team-name">Iraq</div><div class="team-rank">1er Mundial desde 1986</div></div>
-            <div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">1 — 3</div></div>
-            <div class="team-block"><div class="team-flag">🇳🇴</div><div class="team-name">Noruega</div><div class="team-rank">Haaland · Clasificó invicto</div></div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Noruega 3 — 1 Iraq</span><span class="badge green">Confianza Alta</span></div>
-            <div class="insight-block">Haaland anota. Iraq puede sorprender con un gol pero Noruega tiene demasiado poder.</div>
-          </div>
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo I</span><span class="match-time">🕒 6:00 PM ET · Gillette, Boston</span></div><span class="badge yellow">⏳ Pendiente</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇮🇶</div><div class="team-name">Iraq</div><div class="team-rank">1er Mundial desde 1986</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">1 — 3</div></div><div class="team-block"><div class="team-flag">🇳🇴</div><div class="team-name">Noruega</div><div class="team-rank">Haaland · Clasificó invicto</div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Noruega 3 — 1 Iraq</span><span class="badge green">Alta</span></div><div class="insight-block">Haaland debuta en Mundiales. Iraq puede marcar pero Noruega es demasiado superior.</div></div>
         </div>
 
         <div class="match-card">
-          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo J</span><span class="match-time">🕒 9:00 PM ET · Arrowhead, KC</span></div><span class="badge yellow">⚡ Messi 6to Mundial</span></div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇦🇷</div><div class="team-name">Argentina</div><div class="team-rank">Campeón del Mundo · Ranking #1</div></div>
-            <div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">2 — 0</div></div>
-            <div class="team-block"><div class="team-flag">🇩🇿</div><div class="team-name">Argelia</div><div class="team-rank">Venció a Holanda 1-0 (amistoso)</div></div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Argentina 2 — 0 Argelia</span><span class="badge cyan">Confianza Media-Alta</span></div>
-            <div class="insight-block">Argentina defiende el título con seriedad. Messi puede acercarse al récord de goles.</div>
-          </div>
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo J</span><span class="match-time">🕒 9:00 PM ET · Arrowhead, Kansas City</span></div><span class="badge yellow">⏳ Pendiente</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇦🇷</div><div class="team-name">Argentina</div><div class="team-rank">Campeón · Messi 6to Mundial · #1</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">2 — 0</div></div><div class="team-block"><div class="team-flag">🇩🇿</div><div class="team-name">Argelia</div><div class="team-rank">Venció a Holanda en amistoso 1-0</div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Argentina 2 — 0 Argelia</span><span class="badge cyan">Media-Alta</span></div><div class="insight-block">Tras el día de los empates, ¿Argentina puede romper la racha o Argelia sorprende?</div></div>
         </div>
 
         <div class="match-card">
-          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo J</span><span class="match-time">🕒 12:00 AM ET (madrugada 17) · Levi's, SF</span></div></div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇦🇹</div><div class="team-name">Austria</div><div class="team-rank">6W en clasificación · 22 goles</div></div>
-            <div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">2 — 0</div></div>
-            <div class="team-block"><div class="team-flag">🇯🇴</div><div class="team-name">Jordania</div><div class="team-rank">⭐ Debut · Ranking ~95</div></div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Austria 2 — 0 Jordania</span><span class="badge green">Confianza Alta</span></div>
-            <div class="insight-block">Austria domina cómodamente. Jordania debuta con una tarde difícil.</div>
-          </div>
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo J</span><span class="match-time">🕒 12:00 AM ET (madrugada 17) · Levi's, SF</span></div><span class="badge yellow">⏳ Pendiente</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇦🇹</div><div class="team-name">Austria</div><div class="team-rank">6W en clasificación</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">2 — 0</div></div><div class="team-block"><div class="team-flag">🇯🇴</div><div class="team-name">Jordania</div><div class="team-rank">⭐ Debut · 3 derrotas en últimos 5</div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Austria 2 — 0 Jordania</span><span class="badge green">Alta</span></div><div class="insight-block">Austria domina cómodamente. Jordania debuta con una tarde difícil.</div></div>
         </div>
       </section>
 
       <!-- ══ JUN 17 ══ -->
       <section id="jun-17" data-icon="📅">
         <h2>📅 Miércoles 17 de Junio — Última jornada de debuts <a class="permalink" href="#jun-17">#</a></h2>
-        <div class="callout info"><strong>Nota:</strong> Desde el 18 de junio comienzan a repetirse selecciones. El 17 es el último día de primeros partidos.</div>
+        <div class="callout info"><strong>Nota:</strong> Desde el 18 repiten selecciones. El 17 cierra la primera ronda completa.</div>
 
         <div class="match-card">
-          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo K</span><span class="match-time">🕒 1:00 PM ET · NRG Stadium, Houston</span></div><span class="badge yellow">⚡ Ronaldo 6to Mundial</span></div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇵🇹</div><div class="team-name">Portugal</div><div class="team-rank">Ronaldo · 227 caps · 143 goles · #8</div></div>
-            <div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">3 — 0</div></div>
-            <div class="team-block"><div class="team-flag">🇨🇩</div><div class="team-name">DR Congo</div><div class="team-rank">Velocidad africana · Ranking ~60</div></div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Portugal 3 — 0 DR Congo</span><span class="badge green">Confianza Alta</span></div>
-            <div class="insight-block">Ronaldo hace historia. Portugal golpea fuerte en su estreno con una goleada.</div>
-          </div>
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo K</span><span class="match-time">🕒 1:00 PM ET · NRG, Houston</span></div><span class="badge yellow">⚡ Ronaldo 6to Mundial</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇵🇹</div><div class="team-name">Portugal</div><div class="team-rank">Ronaldo 143 goles · #8</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">3 — 0</div></div><div class="team-block"><div class="team-flag">🇨🇩</div><div class="team-name">DR Congo</div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Portugal 3 — 0 DR Congo</span><span class="badge green">Alta</span></div><div class="insight-block">Ronaldo hace historia. Pero tras el 15, ¿puede DR Congo imitar a Cabo Verde?</div></div>
         </div>
 
         <div class="match-card">
-          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo L</span><span class="match-time">🕒 4:00 PM ET · AT&T Stadium, TX</span></div><span class="badge yellow">⚡ Revancha histórica</span></div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div><div class="team-name">Inglaterra</div><div class="team-rank">Kane + Bellingham + Saka · Ranking #5</div></div>
-            <div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">2 — 1</div></div>
-            <div class="team-block"><div class="team-flag">🇭🇷</div><div class="team-name">Croacia</div><div class="team-rank">Veteranos con oficio · Eliminó a Inglaterra en 2018</div></div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Inglaterra 2 — 1 Croacia</span><span class="badge cyan">Confianza Media-Alta</span></div>
-            <div class="insight-block">Inglaterra controla pero Croacia no se rinde. Bellingham marca la diferencia.</div>
-          </div>
+          <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo L</span><span class="match-time">🕒 4:00 PM ET · AT&T, Arlington</span></div><span class="badge yellow">⚡ Revancha 2018</span></div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div><div class="team-name">Inglaterra</div><div class="team-rank">Kane + Bellingham + Saka · #5</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">2 — 1</div></div><div class="team-block"><div class="team-flag">🇭🇷</div><div class="team-name">Croacia</div><div class="team-rank">Eliminó a Inglaterra en 2018</div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Inglaterra 2 — 1 Croacia</span><span class="badge cyan">Media-Alta</span></div><div class="insight-block">Inglaterra controla. Croacia no se rinde. Bellingham decide.</div></div>
         </div>
 
         <div class="match-card">
           <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo L</span><span class="match-time">🕒 7:00 PM ET · BMO Field, Toronto</span></div></div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇬🇭</div><div class="team-name">Ghana</div><div class="team-rank">Kudus (Tottenham) · Semenyo · Iñaki Williams</div></div>
-            <div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">1 — 0</div></div>
-            <div class="team-block"><div class="team-flag">🇵🇦</div><div class="team-name">Panamá</div><div class="team-rank">2da Copa del Mundo</div></div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Ghana 1 — 0 Panamá</span><span class="badge yellow">Confianza Media</span></div>
-            <div class="insight-block">Partido muy disputado. Ghana gana si Kudus aparece. Panamá puede sorprender.</div>
-          </div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇬🇭</div><div class="team-name">Ghana</div><div class="team-rank">Kudus (Tottenham) · Semenyo</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">1 — 0</div></div><div class="team-block"><div class="team-flag">🇵🇦</div><div class="team-name">Panamá</div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Ghana 1 — 0 Panamá</span><span class="badge yellow">Media</span></div><div class="insight-block">Muy disputado. Ghana gana si Kudus aparece.</div></div>
         </div>
 
         <div class="match-card">
           <div class="match-header"><div class="match-meta"><span class="badge blue">Grupo K</span><span class="match-time">🕒 10:00 PM ET · Estadio Azteca, CDMX</span></div><span class="badge yellow">⚡ James Rodríguez</span></div>
-          <div class="match-teams">
-            <div class="team-block"><div class="team-flag">🇺🇿</div><div class="team-name">Uzbekistán</div><div class="team-rank">⭐ Debut · Ranking ~75</div></div>
-            <div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">0 — 2</div></div>
-            <div class="team-block"><div class="team-flag">🇨🇴</div><div class="team-name">Colombia</div><div class="team-rank">James + Luis Díaz + Jhon Arias · #14</div></div>
-          </div>
-          <div class="match-footer">
-            <div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Colombia 2 — 0 Uzbekistán</span><span class="badge cyan">Confianza Media-Alta</span></div>
-            <div class="insight-block">Colombia tiene demasiada calidad para el debut uzbeko. James Rodríguez dirige.</div>
-          </div>
+          <div class="match-teams"><div class="team-block"><div class="team-flag">🇺🇿</div><div class="team-name">Uzbekistán</div><div class="team-rank">⭐ Debut</div></div><div class="vs-block"><div class="vs-text">VS</div><div class="pred-score-display">0 — 2</div></div><div class="team-block"><div class="team-flag">🇨🇴</div><div class="team-name">Colombia</div><div class="team-rank">James + Luis Díaz · #14</div></div></div>
+          <div class="match-footer"><div class="prediction-block"><span class="pred-label">Predicción</span><span class="pred-result">Colombia 2 — 0 Uzbekistán</span><span class="badge cyan">Media-Alta</span></div><div class="insight-block">Colombia tiene demasiada calidad. James Rodríguez dirige en el Azteca.</div></div>
         </div>
       </section>
 
@@ -763,30 +345,28 @@
 
         <div class="table-wrap">
           <table>
-            <thead>
-              <tr><th>Fecha</th><th>Grupo</th><th>Partido</th><th>Predicción</th><th>Resultado</th><th>Precisión</th></tr>
-            </thead>
+            <thead><tr><th>Fecha</th><th>Grupo</th><th>Partido</th><th>Predicción</th><th>Resultado</th><th>Precisión</th></tr></thead>
             <tbody>
-              <tr><td>Jun 11 ✅</td><td><span class="badge gray">A</span></td><td>🇲🇽 México vs Sudáfrica 🇿🇦</td><td class="summary-score">México 2-0</td><td class="result-score-exact">México 2-0 ✓</td><td><span class="badge green">✓✓ Exacto</span></td></tr>
-              <tr><td>Jun 11 ✅</td><td><span class="badge gray">A</span></td><td>🇰🇷 Corea del Sur vs Chequia 🇨🇿</td><td class="summary-score">Corea 2-1</td><td class="result-score-exact">Corea 2-1 ✓</td><td><span class="badge green">✓✓ Exacto</span></td></tr>
-              <tr><td>Jun 12 ✅</td><td><span class="badge blue">B</span></td><td>🇨🇦 Canadá vs Bosnia 🇧🇦</td><td class="summary-score">Canadá 1-0</td><td class="result-score-fail">1-1 (empate)</td><td><span class="badge red">✗ Fallo</span></td></tr>
-              <tr><td>Jun 12 ✅</td><td><span class="badge blue">D</span></td><td>🇺🇸 USA vs Paraguay 🇵🇾</td><td class="summary-score">USA 2-1</td><td class="result-score-winner">USA 4-1 ✓</td><td><span class="badge blue">✓ Ganador</span></td></tr>
-              <tr><td>Jun 13 ✅</td><td><span class="badge blue">B</span></td><td>🇶🇦 Qatar vs Suiza 🇨🇭</td><td class="summary-score">Suiza 2-0</td><td class="result-score-fail">1-1 (empate)</td><td><span class="badge red">✗ Fallo</span></td></tr>
-              <tr><td>Jun 13 ✅</td><td><span class="badge blue">C</span></td><td>🇧🇷 Brasil vs Marruecos 🇲🇦</td><td class="summary-score">1-1</td><td class="result-score-exact">1-1 ✓</td><td><span class="badge green">✓✓ Exacto 🎯</span></td></tr>
-              <tr><td>Jun 13 ✅</td><td><span class="badge blue">C</span></td><td>🇭🇹 Haití vs Escocia 🏴󠁧󠁢󠁳󠁣󠁴󠁿</td><td class="summary-score">Escocia 2-1</td><td class="result-score-winner">Escocia 1-0 ✓</td><td><span class="badge blue">✓ Ganador</span></td></tr>
-              <tr><td>Jun 14 ✅</td><td><span class="badge blue">D</span></td><td>🇦🇺 Australia vs Turquía 🇹🇷</td><td class="summary-score">Turquía 1-0</td><td class="result-score-fail">Australia 2-0 🚨</td><td><span class="badge orange">🚨 Sorpresa</span></td></tr>
-              <tr><td>Jun 14 ⏳</td><td><span class="badge blue">E</span></td><td>🇩🇪 Alemania vs Curazao 🇨🇼</td><td class="summary-score">Alemania 4-0</td><td>—</td><td><span class="badge yellow">Hoy 1 PM ET</span></td></tr>
-              <tr><td>Jun 14 ⏳</td><td><span class="badge blue">F</span></td><td>🇳🇱 P. Bajos vs Japón 🇯🇵</td><td class="summary-score">P. Bajos 2-1</td><td>—</td><td><span class="badge yellow">Hoy 4 PM ET</span></td></tr>
-              <tr><td>Jun 14 ⏳</td><td><span class="badge blue">E</span></td><td>🇨🇮 C. de Marfil vs Ecuador 🇪🇨</td><td class="summary-score">C. de Marfil 1-0</td><td>—</td><td><span class="badge yellow">Hoy 7 PM ET</span></td></tr>
-              <tr><td>Jun 14 ⏳</td><td><span class="badge blue">F</span></td><td>🇸🇪 Suecia vs Túnez 🇹🇳</td><td class="summary-score">Suecia 2-1</td><td>—</td><td><span class="badge yellow">Hoy 10 PM ET</span></td></tr>
-              <tr><td>Jun 15</td><td><span class="badge blue">H</span></td><td>🇪🇸 España vs Cabo Verde 🇨🇻</td><td class="summary-score">España 4-0</td><td>—</td><td><span class="badge gray">Pendiente</span></td></tr>
-              <tr><td>Jun 15</td><td><span class="badge blue">G</span></td><td>🇧🇪 Bélgica vs Egipto 🇪🇬</td><td class="summary-score">Bélgica 2-1</td><td>—</td><td><span class="badge gray">Pendiente</span></td></tr>
-              <tr><td>Jun 15</td><td><span class="badge blue">H</span></td><td>🇸🇦 Arabia Saudita vs Uruguay 🇺🇾</td><td class="summary-score">Uruguay 2-0</td><td>—</td><td><span class="badge gray">Pendiente</span></td></tr>
-              <tr><td>Jun 15</td><td><span class="badge blue">G</span></td><td>🇮🇷 Irán vs Nueva Zelanda 🇳🇿</td><td class="summary-score">Irán 1-0</td><td>—</td><td><span class="badge gray">Pendiente</span></td></tr>
-              <tr><td>Jun 16</td><td><span class="badge blue">I</span></td><td>🇫🇷 Francia vs Senegal 🇸🇳</td><td class="summary-score">Francia 2-0</td><td>—</td><td><span class="badge gray">Pendiente</span></td></tr>
-              <tr><td>Jun 16</td><td><span class="badge blue">I</span></td><td>🇮🇶 Iraq vs Noruega 🇳🇴</td><td class="summary-score">Noruega 3-1</td><td>—</td><td><span class="badge gray">Pendiente</span></td></tr>
-              <tr><td>Jun 16</td><td><span class="badge blue">J</span></td><td>🇦🇷 Argentina vs Argelia 🇩🇿</td><td class="summary-score">Argentina 2-0</td><td>—</td><td><span class="badge gray">Pendiente</span></td></tr>
-              <tr><td>Jun 16</td><td><span class="badge blue">J</span></td><td>🇦🇹 Austria vs Jordania 🇯🇴</td><td class="summary-score">Austria 2-0</td><td>—</td><td><span class="badge gray">Pendiente</span></td></tr>
+              <tr><td>Jun 11 ✅</td><td><span class="badge gray">A</span></td><td>🇲🇽 México vs Sudáfrica 🇿🇦</td><td class="summary-score">México 2-0</td><td class="res-exact">México 2-0</td><td><span class="badge green">✓✓ Exacto</span></td></tr>
+              <tr><td>Jun 11 ✅</td><td><span class="badge gray">A</span></td><td>🇰🇷 Corea del Sur vs Chequia 🇨🇿</td><td class="summary-score">Corea 2-1</td><td class="res-exact">Corea 2-1</td><td><span class="badge green">✓✓ Exacto</span></td></tr>
+              <tr><td>Jun 12 ✅</td><td><span class="badge blue">B</span></td><td>🇨🇦 Canadá vs Bosnia 🇧🇦</td><td class="summary-score">Canadá 1-0</td><td class="res-fail">1-1 empate</td><td><span class="badge red">✗ Fallo</span></td></tr>
+              <tr><td>Jun 12 ✅</td><td><span class="badge blue">D</span></td><td>🇺🇸 USA vs Paraguay 🇵🇾</td><td class="summary-score">USA 2-1</td><td class="res-winner">USA 4-1</td><td><span class="badge blue">✓ Ganador</span></td></tr>
+              <tr><td>Jun 13 ✅</td><td><span class="badge blue">B</span></td><td>🇶🇦 Qatar vs Suiza 🇨🇭</td><td class="summary-score">Suiza 2-0</td><td class="res-fail">1-1 empate</td><td><span class="badge red">✗ Fallo</span></td></tr>
+              <tr><td>Jun 13 ✅</td><td><span class="badge blue">C</span></td><td>🇧🇷 Brasil vs Marruecos 🇲🇦</td><td class="summary-score">1-1</td><td class="res-exact">1-1 🎯</td><td><span class="badge green">✓✓ Exacto</span></td></tr>
+              <tr><td>Jun 13 ✅</td><td><span class="badge blue">C</span></td><td>🇭🇹 Haití vs Escocia 🏴󠁧󠁢󠁳󠁣󠁴󠁿</td><td class="summary-score">Escocia 2-1</td><td class="res-winner">Escocia 1-0</td><td><span class="badge blue">✓ Ganador</span></td></tr>
+              <tr><td>Jun 14 ✅</td><td><span class="badge blue">D</span></td><td>🇦🇺 Australia vs Turquía 🇹🇷</td><td class="summary-score">Turquía 1-0</td><td class="res-fail">Australia 2-0 🚨</td><td><span class="badge orange">🚨 Sorpresa</span></td></tr>
+              <tr><td>Jun 14 ✅</td><td><span class="badge blue">E</span></td><td>🇩🇪 Alemania vs Curazao 🇨🇼</td><td class="summary-score">Alemania 4-0</td><td class="res-winner">Alemania 7-1</td><td><span class="badge blue">✓ Ganador</span></td></tr>
+              <tr><td>Jun 14 ✅</td><td><span class="badge blue">F</span></td><td>🇳🇱 P. Bajos vs Japón 🇯🇵</td><td class="summary-score">P. Bajos 2-1</td><td class="res-fail">2-2 empate</td><td><span class="badge red">✗ Fallo</span></td></tr>
+              <tr><td>Jun 14 ✅</td><td><span class="badge blue">E</span></td><td>🇨🇮 C. de Marfil vs Ecuador 🇪🇨</td><td class="summary-score">CIV 1-0</td><td class="res-exact">CIV 1-0 🎯</td><td><span class="badge green">✓✓ Exacto</span></td></tr>
+              <tr><td>Jun 14 ✅</td><td><span class="badge blue">F</span></td><td>🇸🇪 Suecia vs Túnez 🇹🇳</td><td class="summary-score">Suecia 2-1</td><td class="res-winner">Suecia 5-1</td><td><span class="badge blue">✓ Ganador</span></td></tr>
+              <tr><td>Jun 15 ✅</td><td><span class="badge blue">H</span></td><td>🇪🇸 España vs Cabo Verde 🇨🇻</td><td class="summary-score">España 4-0</td><td class="res-fail">0-0 🚨</td><td><span class="badge orange">🚨 Shock total</span></td></tr>
+              <tr><td>Jun 15 ✅</td><td><span class="badge blue">G</span></td><td>🇧🇪 Bélgica vs Egipto 🇪🇬</td><td class="summary-score">Bélgica 2-1</td><td class="res-fail">1-1 empate</td><td><span class="badge red">✗ Fallo</span></td></tr>
+              <tr><td>Jun 15 ✅</td><td><span class="badge blue">H</span></td><td>🇸🇦 Arabia Saudita vs Uruguay 🇺🇾</td><td class="summary-score">Uruguay 2-0</td><td class="res-fail">1-1 empate</td><td><span class="badge red">✗ Fallo</span></td></tr>
+              <tr><td>Jun 15 ✅</td><td><span class="badge blue">G</span></td><td>🇮🇷 Irán vs Nueva Zelanda 🇳🇿</td><td class="summary-score">Irán 1-0</td><td class="res-fail">2-2 empate</td><td><span class="badge red">✗ Fallo</span></td></tr>
+              <tr><td>Jun 16 ⏳</td><td><span class="badge blue">I</span></td><td>🇫🇷 Francia vs Senegal 🇸🇳</td><td class="summary-score">Francia 2-0</td><td>—</td><td><span class="badge yellow">Hoy 3 PM ET</span></td></tr>
+              <tr><td>Jun 16 ⏳</td><td><span class="badge blue">I</span></td><td>🇮🇶 Iraq vs Noruega 🇳🇴</td><td class="summary-score">Noruega 3-1</td><td>—</td><td><span class="badge yellow">Hoy 6 PM ET</span></td></tr>
+              <tr><td>Jun 16 ⏳</td><td><span class="badge blue">J</span></td><td>🇦🇷 Argentina vs Argelia 🇩🇿</td><td class="summary-score">Argentina 2-0</td><td>—</td><td><span class="badge yellow">Hoy 9 PM ET</span></td></tr>
+              <tr><td>Jun 16 ⏳</td><td><span class="badge blue">J</span></td><td>🇦🇹 Austria vs Jordania 🇯🇴</td><td class="summary-score">Austria 2-0</td><td>—</td><td><span class="badge yellow">Hoy 12 AM ET</span></td></tr>
               <tr><td>Jun 17</td><td><span class="badge blue">K</span></td><td>🇵🇹 Portugal vs DR Congo 🇨🇩</td><td class="summary-score">Portugal 3-0</td><td>—</td><td><span class="badge gray">Pendiente</span></td></tr>
               <tr><td>Jun 17</td><td><span class="badge blue">L</span></td><td>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra vs Croacia 🇭🇷</td><td class="summary-score">Inglaterra 2-1</td><td>—</td><td><span class="badge gray">Pendiente</span></td></tr>
               <tr><td>Jun 17</td><td><span class="badge blue">L</span></td><td>🇬🇭 Ghana vs Panamá 🇵🇦</td><td class="summary-score">Ghana 1-0</td><td>—</td><td><span class="badge gray">Pendiente</span></td></tr>
@@ -795,11 +375,11 @@
           </table>
         </div>
 
-        <h3 style="margin-top:24px;margin-bottom:12px;">Aprendizajes hasta ahora</h3>
-        <div class="callout danger"><strong>🚨 Sorpresa del torneo: Australia 2-0 Turquía</strong> Predijimos Turquía con confianza alta. Irankunda fue fenomenal y Arda Güler nunca apareció.</div>
-        <div class="callout warning"><strong>⚠️ Los empates rompieron el tablero</strong> Canadá-Bosnia y Qatar-Suiza terminaron 1-1 cuando esperábamos victorias claras. El torneo es parejo.</div>
-        <div class="callout success"><strong>🎯 Exacto más orgulloso</strong> Brasil 1-1 Marruecos — la predicción más difícil del torneo. Acertamos el único empate que veíamos posible contra una de las mejores selecciones del mundo.</div>
-        <div class="callout info"><strong>💡 USA rompió todos los registros</strong> Predijimos 2-1 pero ganaron 4-1 — la mayor goleada de la historia del USMNT en un Mundial. Balogun fue una bestia.</div>
+        <h3>Análisis de lo jugado</h3>
+        <div class="callout danger"><strong>🚨 España 0-0 Cabo Verde — El shock del torneo</strong> La campeona de Europa no pudo marcarle al equipo debutante. Ni Yamal ni Morata encontraron el gol.</div>
+        <div class="callout warning"><strong>⚠️ Jun 15: 4 empates históricos</strong> Nunca antes en un Mundial todos los partidos del día terminaron en empate. Las predicciones del 15 fallaron todas.</div>
+        <div class="callout success"><strong>🎯 Exactos logrados</strong> México 2-0, Corea 2-1, Brasil 1-1 Marruecos, Costa de Marfil 1-0 Ecuador. Cuatro scores exactos en 16 partidos.</div>
+        <div class="callout info"><strong>💡 Lo que el torneo está mostrando</strong> Los favoritos no ganan fácil. Australia, Japón, Cabo Verde, Qatar, Nueva Zelanda — los "débiles" están complicando a todos. El Mundial 2026 con 48 equipos tiene mucho más equilibrio que versiones anteriores.</div>
       </section>
 
     </div>
@@ -807,79 +387,18 @@
 </div>
 
 <script>
-  function applyTheme(dark){
-    document.documentElement.classList.toggle('dark',dark);
-    document.getElementById('theme-btn').textContent=dark?'🌙':'☀️';
-  }
-  function toggleTheme(){
-    const isDark=!document.documentElement.classList.contains('dark');
-    localStorage.setItem('theme',isDark?'dark':'light');
-    applyTheme(isDark);
-  }
-  const saved=localStorage.getItem('theme');
-  applyTheme(saved?saved==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches);
-
-  function buildNav(){
-    const navList=document.getElementById('nav-list');
-    document.querySelectorAll('section[id]').forEach(section=>{
-      const h2=section.querySelector('h2');
-      if(!h2)return;
-      const icon=section.getAttribute('data-icon')||'▸';
-      const rawText=Array.from(h2.childNodes).filter(n=>n.nodeType===Node.TEXT_NODE).map(n=>n.textContent).join('').replace(/^[^\p{L}\p{N}]+/u,'').trim().split('—')[0].trim();
-      const li=document.createElement('li');
-      li.innerHTML=`<a href="#${section.id}" data-label="${rawText}"><span class="nav-icon">${icon}</span><span>${rawText}</span></a>`;
-      navList.appendChild(li);
-    });
-  }
+  function applyTheme(dark){document.documentElement.classList.toggle('dark',dark);document.getElementById('theme-btn').textContent=dark?'🌙':'☀️';}
+  function toggleTheme(){const d=!document.documentElement.classList.contains('dark');localStorage.setItem('theme',d?'dark':'light');applyTheme(d);}
+  applyTheme(localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches);
+  function buildNav(){const nl=document.getElementById('nav-list');document.querySelectorAll('section[id]').forEach(s=>{const h2=s.querySelector('h2');if(!h2)return;const icon=s.getAttribute('data-icon')||'▸';const t=Array.from(h2.childNodes).filter(n=>n.nodeType===Node.TEXT_NODE).map(n=>n.textContent).join('').replace(/^[^\p{L}\p{N}]+/u,'').trim().split('—')[0].trim();const li=document.createElement('li');li.innerHTML=`<a href="#${s.id}" data-label="${t}"><span class="nav-icon">${icon}</span><span>${t}</span></a>`;nl.appendChild(li);});}
   buildNav();
-
-  document.querySelectorAll('section[id] h2').forEach(h2=>{
-    const section=h2.closest('section');
-    const link=document.createElement('a');
-    link.href=`#${section.id}`;link.className='permalink';link.textContent='#';
-    link.addEventListener('click',e=>{
-      e.preventDefault();
-      navigator.clipboard.writeText(window.location.href.split('#')[0]+`#${section.id}`);
-      link.textContent='✓';setTimeout(()=>{link.textContent='#';},1500);
-    });
-    h2.appendChild(link);
-  });
-
-  const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        document.querySelectorAll('.nav-list a').forEach(a=>a.classList.remove('active'));
-        const active=document.querySelector(`.nav-list a[href="#${entry.target.id}"]`);
-        if(active)active.classList.add('active');
-      }
-    });
-  },{threshold:0.2,rootMargin:'-60px 0px -60% 0px'});
-  document.querySelectorAll('section[id]').forEach(s=>observer.observe(s));
-
+  document.querySelectorAll('section[id] h2').forEach(h2=>{const s=h2.closest('section');const a=document.createElement('a');a.href=`#${s.id}`;a.className='permalink';a.textContent='#';a.addEventListener('click',e=>{e.preventDefault();navigator.clipboard.writeText(location.href.split('#')[0]+`#${s.id}`);a.textContent='✓';setTimeout(()=>a.textContent='#',1500);});h2.appendChild(a);});
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.nav-list a').forEach(a=>a.classList.remove('active'));const a=document.querySelector(`.nav-list a[href="#${e.target.id}"]`);if(a)a.classList.add('active');}});},{threshold:.2,rootMargin:'-60px 0px -60% 0px'});
+  document.querySelectorAll('section[id]').forEach(s=>obs.observe(s));
   function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open');}
-  function toggleSidebarCollapse(){
-    const sidebar=document.getElementById('sidebar');
-    const main=document.getElementById('main-content');
-    const btn=document.getElementById('collapse-btn');
-    const collapsed=sidebar.classList.toggle('collapsed');
-    main.classList.toggle('sidebar-collapsed',collapsed);
-    btn.textContent=collapsed?'›':'‹';
-    localStorage.setItem('sidebar-collapsed',collapsed);
-  }
-  if(localStorage.getItem('sidebar-collapsed')==='true'){
-    document.getElementById('sidebar').classList.add('collapsed');
-    document.getElementById('main-content').classList.add('sidebar-collapsed');
-    const btn=document.getElementById('collapse-btn');
-    if(btn)btn.textContent='›';
-  }
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click',e=>{
-      e.preventDefault();
-      const target=document.querySelector(a.getAttribute('href'));
-      if(target)target.scrollIntoView({behavior:'smooth'});
-      if(window.innerWidth<=768)document.getElementById('sidebar').classList.remove('open');
-    });
-  });
+  function toggleSidebarCollapse(){const sb=document.getElementById('sidebar'),m=document.getElementById('main-content'),btn=document.getElementById('collapse-btn'),c=sb.classList.toggle('collapsed');m.classList.toggle('sidebar-collapsed',c);btn.textContent=c?'›':'‹';localStorage.setItem('sidebar-collapsed',c);}
+  if(localStorage.getItem('sidebar-collapsed')==='true'){document.getElementById('sidebar').classList.add('collapsed');document.getElementById('main-content').classList.add('sidebar-collapsed');const btn=document.getElementById('collapse-btn');if(btn)btn.textContent='›';}
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});if(window.innerWidth<=768)document.getElementById('sidebar').classList.remove('open');});});
 </script>
 </body>
 </html>
